@@ -41,7 +41,7 @@ typedef struct{
 	volatile u32 CR;				/* RCC clock control register */
 	volatile u32 PLLCFGR;			/* RCC PLL configuration register */
 	volatile u32 CFGR;				/* RCC clock configuration register */
-	volatile u32 CIR;
+	volatile u32 CIR;				/* RCC clock interrupt register */
 	volatile u32 AHB1RSTR;
 	volatile u32 AHB2RSTR;
 	volatile u32 RESERVED_1[2];
@@ -104,7 +104,7 @@ typedef enum{
 	AHB_PRE_128		,
 	AHB_PRE_256		,
 	AHB_PRE_512		,
-} AHB_Src_t;
+} AHB_PRESCL_t;
 /* APB1 Prescalar options */
 typedef enum{
 	APB1_PRE_1	=0	,
@@ -112,7 +112,7 @@ typedef enum{
 	APB1_PRE_4		,
 	APB1_PRE_8		,
 	APB1_PRE_16
-} APB1_Src_t;
+} APB1_PRESCL_t;
 /* APB2 Prescalar options */
 typedef enum{
 	APB2_PRE_1	=0	,
@@ -120,7 +120,7 @@ typedef enum{
 	APB2_PRE_4		,
 	APB2_PRE_8		,
 	APB2_PRE_16
-} APB2_Src_t;
+} APB2_PRESCL_t;
 /***********************************************************************************/
 /*RCC->RC Bits*/
 #define PLLI2SRDY	27U /* PLLI2S clock ready flag */
@@ -223,7 +223,8 @@ This register is used to configure the PLL clock outputs according to the formul
 */
 #define SWS			02U /* System clock switch status*/
 
-#define SW			00U /* System clock switch */
+#define SW1			00U /* System clock switch */
+#define SW0			00U /* System clock switch */
 /* 2 bits: 0-1*/
 /*
  * 00: HSI oscillator selected as system clock
@@ -233,5 +234,97 @@ This register is used to configure the PLL clock outputs according to the formul
  */
 /*RCC->CFGR Bits End*/
 /***********************************************************************************/
+
+
+
+/***********************************************************************************/
+/*RCC->CIR Bits*/ /* RCC clock interrupt register */
+
+#define CSSC			23U /* Clock security system interrupt clear  */
+/*This bit is set by software to clear the CSSF flag*/
+
+#define PLLI2SRDYC		21U /* PLLI2S ready interrupt clear */
+/*This bit is set by software to clear the PLLI2SRDYF flag.*/
+
+#define PLLRDYC			20U /* Main PLL(PLL) ready interrupt clear */
+/*This bit is set by software to clear the PLLRDYF flag.*/
+
+#define HSERDYC			19U /* HSE ready interrupt clear */
+/*This bit is set by software to clear the HSERDYF flag.*/
+
+#define HSIRDYC			18U /* HSI ready interrupt clear */
+/*This bit is set software to clear the HSIRDYF flag.*/
+
+#define LSERDYC			17U /* LSE ready interrupt clear */
+/*This bit is set by software to clear the LSERDYF flag.*/
+
+#define LSIRDYC			16U /* LSI ready interrupt clear */
+/*This bit is set by software to clear the LSIRDYF flags.*/
+
+/*Interrupt Enable*/
+#define PLLI2SRDYIE		13U /*  PLLI2S ready interrupt enable */
+#define PLLRDYIE		12U /*  Main PLL (PLL) ready interrupt enable */
+#define HSERDYIE		11U /*  HSE ready interrupt enable */
+#define HSIRDYIE		10U /*  HSI ready interrupt enable */
+#define LSERDYIE		09U /*  LSE ready interrupt enable */
+#define LSIRDYIE		08U /*  LSI ready interrupt enable */
+
+/*Interrupt Flags */
+#define CSSF			07U /*  Clock security system interrupt flag */
+/*CSSF Notes:
+ * - Set by hardware when a failure is detected in the HSE oscillator.
+ * - Cleared by software setting the CSSC bit.
+ */
+#define PLLI2SRDYF		05U /*  PLLI2S ready interrupt flag */
+#define PLLRDYF			04U /*  Main PLL (PLL) ready interrupt flag */
+#define HSERDYF			03U /*  HSE ready interrupt flag */
+#define HSIRDYF			02U /*  HSI ready interrupt flag */
+#define LSERDYF			01U /*  LSE ready interrupt flag */
+#define LSIRDYF			02U /*  LSI ready interrupt flag */
+/*RCC->CIR Bits End*/
+/***********************************************************************************/
+
+/***********************************************************************************/
+/*RCC->AHB1RSTR Bits*/ /* RCC AHB1 peripheral reset register */
+
+/*General RESET BITs Notes:
+* 0: does not reset
+* 1: resets
+*/
+#define DMA2RST			22U /* DMA2 reset  */
+#define DMA1RST			21U /* DMA1 reset */
+#define CRCRST			12U /* CRC reset */
+#define GPIOCRST		02U /* IO port C reset */
+#define GPIOBRST		01U /* IO port B reset */
+#define GPIOARST		00U /* IO port A reset */
+
+/*RCC->AHB1RSTR Bits End*/
+/***********************************************************************************/
+
+/***********************************************************************************/
+/*RCC->AHB1ENR Bits*/ /* RCC AHB1 peripheral clock enable register */
+
+/*General RESET BITs Notes:
+* 0: clock disabled
+* 1: clock enabled
+*/
+#define DMA2EN			22U /* DMA2 clock enable */
+#define DMA1EN			21U /* DMA1 clock enable */
+#define CRCEN			12U /* CRC clock enable */
+#define GPIOCEN			02U /* IO port C clock enable */
+#define GPIOBEN			01U /* IO port B clock enable */
+#define GPIOAEN			00U /* IO port A clock enable */
+
+/*RCC->AHB1RSTR Bits End*/
+/***********************************************************************************/
+/* TODO:
+ * RCC AHB2 peripheral reset register
+ * RCC APB1 peripheral reset register
+ * RCC APB2 peripheral reset register
+ * RCC AHB2 peripheral clock enable register
+ * RCC APB1 peripheral clock enable register
+ * peripheral clock enable in low power mode register
+ */
+
 
 #endif /* MCAL_RCC_RCC_PRIVATE_H_ */
