@@ -190,7 +190,9 @@ This register is used to configure the PLL clock outputs according to the formul
 */
 #define I2SSRC		23U /* I2S clock selection */
 
-#define PPRE2		13U /*APB high-speed prescaler (APB2)*/
+#define PPRE2_0		13U /*APB high-speed prescaler (APB2)*/
+#define PPRE2_1		14U /*APB high-speed prescaler (APB2)*/
+#define PPRE2_2		15U /*APB high-speed prescaler (APB2)*/
 /*3 bits: 13-14-15*/
 /*
 * 0xx: AHB clock not divided
@@ -199,7 +201,9 @@ This register is used to configure the PLL clock outputs according to the formul
 * 110: AHB clock divided by 8
 * 111: AHB clock divided by 16
 */
-#define PPRE1		10U /* APB Low speed prescaler (APB1) */
+#define PPRE1_0		10U /* APB Low speed prescaler (APB1) */
+#define PPRE1_1		11U /* APB Low speed prescaler (APB1) */
+#define PPRE1_2		12U /* APB Low speed prescaler (APB1) */
 /*3 bits: 10-11-12*/
 /*
 * 0xx: AHB clock not divided
@@ -208,7 +212,10 @@ This register is used to configure the PLL clock outputs according to the formul
 * 110: AHB clock divided by 8
 * 111: AHB clock divided by 16
 */
-#define HPRE		04U /* AHB prescaler */
+#define HPRE_0		04U /* AHB prescaler */
+#define HPRE_1		05U /* AHB prescaler */
+#define HPRE_2		06U /* AHB prescaler */
+#define HPRE_3		07U /* AHB prescaler */
 /*4 bits: 4-5-6-7 */
 /*
 * 0xxx: system clock not divided
@@ -326,5 +333,49 @@ This register is used to configure the PLL clock outputs according to the formul
  * peripheral clock enable in low power mode register
  */
 
+
+/***********************************************************************************/
+/****************************Functions Declaration**********************************/
+/***********************************************************************************/
+
+/***********************************************************************************/
+/* Function Name  : MRCC_vInitAHBPrescaler                                         */
+/* Function Info  : Inits PreScalar							                       */
+/* Function Input : - AHB Prescalar options(AHB_PRESCL_t)						   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+static void MRCC_vInitAHBPrescaler(AHB_PRESCL_t Copy_tAHB_PRE);
+
+/***********************************************************************************/
+/* Function Name  : MRCC_vInitAPB1Prescaler                                        */
+/* Function Info  : Inits APB1 PreScalar					                       */
+/* Function Input : APB1 Prescalar options(APB1_PRESCL_t)						   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+static void MRCC_vInitAPB1Prescaler(APB1_PRESCL_t Copy_tAPB1_PRE);
+
+/***********************************************************************************/
+/* Function Name  : MRCC_vAPB2InitPrescaler                                        */
+/* Function Info  : Inits APB2 PreScalar					                       */
+/* Function Input : APB2 Prescalar options(APB2_PRESCL_t)						   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+static void MRCC_vInitAPB2Prescaler(APB2_PRESCL_t Copy_tAPB2_PRE);
+
+/***********************************************************************************/
+/* Function Name  : MRCC_vInitHSE_SRC                                              */
+/* Function Info  : Sets HSE Source							                       */
+/* Function Input : HSE source options(HSE_Src_t): HSE_Crystal, HSE_RC			   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+static void MRCC_vInitHSE_SRC(HSE_Src_t Copy_t_HSE_SRC);
+
+/***********************************************************************************/
+/* Function Name  : MRCC_vInitHSE_SRC                                              */
+/* Function Info  : Sets PLL Source							                       */
+/* Function Input : PLL source options(PLL_Src_t): PLL_HSI, PLL_HSE  			   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+static void MRCC_vInitPLL_SRC(PLL_Src_t Copy_tPLL_SRC);
 
 #endif /* MCAL_RCC_RCC_PRIVATE_H_ */
