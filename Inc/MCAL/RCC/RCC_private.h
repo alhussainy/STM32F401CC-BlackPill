@@ -72,10 +72,10 @@ typedef struct{
 #define RCC ((volatile RCC_t*)(RCC_BASE_ADD))
 /* Buses options*/
 typedef enum{
-	AHB1 =0	,
-	AHB2	,
-	APB1	,
-	APB2
+	AHB1_BUS =0	,
+	AHB2_BUS	,
+	APB1_BUS	,
+	APB2_BUS
 } Bus_t;
 /* RCC source options */
 typedef enum{

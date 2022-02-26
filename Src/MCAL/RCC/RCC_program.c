@@ -10,6 +10,7 @@
 /*********************************Linking Section***********************************/
 /***********************************************************************************/
 #include "RCC_interface.h"
+#include "RCC_private.h"
 #include "BIT_MATH.h"
 
 /***********************************************************************************/
@@ -284,4 +285,60 @@ static void MRCC_vInitPLL_SRC(PLL_Src_t Copy_tPLL_SRC){
 		default:
 		break;
 	}
+}
+
+
+/***********************************************************************************/
+/* Function Name  : MRCC_vEnablePeripheralClk                                      */
+/* Function Info  : Enable peripheral clock					                       */
+/* Function Input : - Buses options(Bus_t): AHB1_BUS, AHB2_BUS, APB1_BUS, APB2_BUS
+ * 					- Peripheral number on the bus								   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+void MRCC_vEnablePeripheralClk(Bus_t Copy_tBusName,u8 PeripheralNumber){
+	switch(Copy_tBusName){
+		/* GPIO, CRC, and DMA*/
+		case AHB1_BUS:
+			SET_BIT(RCC->AHB1ENR,PeripheralNumber);
+		break;
+		case AHB2_BUS:
+			SET_BIT(RCC->AHB2ENR,PeripheralNumber);
+		break;
+		case APB1_BUS:
+			SET_BIT(RCC->APB1ENR,PeripheralNumber);
+		break;
+		case APB2_BUS:
+			SET_BIT(RCC->APB2ENR,PeripheralNumber);
+		break;
+		default:
+		break;
+	}
+}
+
+
+/***********************************************************************************/
+/* Function Name  : MRCC_vDisablePeripheralClk                                     */
+/* Function Info  : Disable peripheral clock					                   */
+/* Function Input : - Buses options(Bus_t): AHB1_BUS, AHB2_BUS, APB1_BUS, APB2_BUS
+ * 					- Peripheral number on the bus								   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+void MRCC_vDisablePeripheralClk(Bus_t Copy_tBusName,u8 PeripheralNumber){
+	switch(Copy_tBusName){
+			/* GPIO, CRC, and DMA*/
+			case AHB1_BUS:
+				SET_BIT(RCC->AHB1RSTR,PeripheralNumber);
+			break;
+			case AHB2_BUS:
+				SET_BIT(RCC->AHB2RSTR,PeripheralNumber);
+			break;
+			case APB1_BUS:
+				SET_BIT(RCC->APB1RSTR,PeripheralNumber);
+			break;
+			case APB2_BUS:
+				SET_BIT(RCC->APB2RSTR,PeripheralNumber);
+			break;
+			default:
+			break;
+		}
 }

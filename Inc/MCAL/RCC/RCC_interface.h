@@ -48,6 +48,22 @@
 void MRCC_vInitRCC(RCC_Src_t Copy_tRCC_SRC,HSE_Src_t Copy_t_HSE_SRC,PLL_Src_t Copy_tPLL_SRC,AHB_PRESCL_t Copy_tAHB_PRE,APB1_PRESCL_t Copy_tAPB1_PRE,APB2_PRESCL_t Copy_tAPB2_PRE);
 
 
+/***********************************************************************************/
+/* Function Name  : MRCC_vEnablePeripheralClk                                      */
+/* Function Info  : Enable peripheral clock					                       */
+/* Function Input : - Buses options(Bus_t): AHB1_BUS, AHB2_BUS, APB1_BUS, APB2_BUS
+ * 					- Peripheral number on the bus								   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+void MRCC_vEnablePeripheralClk(Bus_t Copy_tBusName,u8 PeripheralNumber);
 
 
+/***********************************************************************************/
+/* Function Name  : MRCC_vDisablePeripheralClk                                     */
+/* Function Info  : Disable peripheral clock					                   */
+/* Function Input : - Buses options(Bus_t): AHB1_BUS, AHB2_BUS, APB1_BUS, APB2_BUS
+ * 					- Peripheral number on the bus								   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+void MRCC_vDisablePeripheralClk(Bus_t Copy_tBusName,u8 PeripheralNumber);
 #endif /* MCAL_RCC_RCC_INTERFACE_H_ */
