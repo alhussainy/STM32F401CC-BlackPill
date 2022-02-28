@@ -102,7 +102,7 @@ void MGPIO_vWritePin(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,OUTPUT_t Copy_tOutput){
 	 *  GPIOx_BSRR register  */
 	switch(Copy_tOutput){
 		case OUT_LOW:
-			SET_BIT(Ptr_tGPIO->BSRR,Copy_u8PinNum+15);
+			SET_BIT(Ptr_tGPIO->BSRR,Copy_u8PinNum+16);
 		break;
 		case OUT_HIGH:
 			SET_BIT(Ptr_tGPIO->BSRR,Copy_u8PinNum);

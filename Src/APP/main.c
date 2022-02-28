@@ -1,13 +1,17 @@
 #include "RCC_interface.h"
-#include "GPIO_interface.h"
+#include "SSD_interface.h"
+
 int main(){
 	MRCC_vEnablePeripheralClk(AHB1_BUS,GPIOAEN);
-	MGPIO_vSetMode(GPIOA, PIN9, OUTPUT_MODE);
-	MGPIO_vSetOutputType(GPIOA, PIN9, OUT_PUSH_PULL);
-	MGPIO_vSetOutputSpeed(GPIOA, PIN9, OUT_HI_SP);
-	MGPIO_vWritePin(GPIOA, PIN9, OUT_HIGH);
-	while(1){
+	HSSD_vInit();
 
+	u8 num=0;
+	volatile int i=0;
+	while(1){
+		if(num>9) num=0;
+		 HSSD_vDisplayNum(num);
+		 for(i=0;i<1000000;i++){};
+		 num++;
 	}
 	return 0;
 }

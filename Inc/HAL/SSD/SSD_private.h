@@ -1,18 +1,18 @@
 /***********************************************************************************/
-/* File Name : GPIO_config.h                                                       */
-/* File Info : Contains configuration options for GPIO							   */
+/* File Name : SSD_private.h                                                      */
+/* File Info : Contains registers addresses and constant Macros					   */
 /* Version   : V1.0                                                                */
 /* Date      : 28 Feb. 2022                                                        */
 /* Author    : Alhussainy Khaled Anwar                                             */
 /***********************************************************************************/
 
+
 /***********************************************************************************/
 /*********************************Header File Guard*********************************/
 /***********************************************************************************/
-#ifndef MCAL_GPIO_GPIO_CONFIG_H_
-#define MCAL_GPIO_GPIO_CONFIG_H_
+#ifndef HAL_SSD_SSD_PRIVATE_H_
+#define HAL_SSD_SSD_PRIVATE_H_
 
 
 
-
-#endif /* MCAL_GPIO_GPIO_CONFIG_H_ */
+#endif /* HAL_SSD_SSD_PRIVATE_H_ */
