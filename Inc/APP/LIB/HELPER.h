@@ -21,4 +21,12 @@
 	targeted bit
 	– bit_number is the bit position (0-7) of the targeted bit
  */
+
+/***********************************************************************************/
+/****************************User-defined data types********************************/
+/***********************************************************************************/
+
+#define _IO		volatile
+#define __I		const volatile
+#define __O		volatile
 #endif /* APP_LIB_HELPER_H_ */
