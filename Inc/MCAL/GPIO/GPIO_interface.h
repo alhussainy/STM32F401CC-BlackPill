@@ -177,6 +177,14 @@ void MGPIO_vWritePin(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,OUTPUT_t Copy_tOutput);
 /***********************************************************************************/
 void MGPIO_vSetAltFun(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,AF_t Copy_tAFNumber);
 
+/***********************************************************************************/
+/* Function Name  : MGPIO_vTogglePin           		                               */
+/* Function Info  : Toggles pin state		     		  		                   */
+/* Function Input : - GPIO Base Address
+ * 					- Pin number(0:15)											   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+void MGPIO_vTogglePin(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum);
 
 /***********************************************************************************/
 /* Function Name  : MGPIO_vWritePort           		                               */

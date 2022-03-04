@@ -1,4 +1,4 @@
-
+Release 
 .cproject
 .project
 .settings/language.settings.xml
@@ -91,3 +91,5 @@ Release/Src/HAL/SSD/SSD_program.o
 Release/Src/HAL/SSD/SSD_program.o
 Release/Src/HAL/SSD/SSD_program.su
 Release/Src/HAL/SSD/subdir.mk
+Release/Src/HAL/SSD/SSD_program.o
+Release/Src/HAL/SSD/SSD_program.su

@@ -133,6 +133,17 @@ void MGPIO_vSetAltFun(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,AF_t Copy_tAFNumber){
 }
 
 /***********************************************************************************/
+/* Function Name  : MGPIO_vTogglePin           		                               */
+/* Function Info  : Toggles pin state		     		  		                   */
+/* Function Input : - GPIO Base Address
+ * 					- Pin number(0:15)											   */
+/* Function Return: None						                                   */
+/***********************************************************************************/
+void MGPIO_vTogglePin(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum){
+	TOG_BIT(Ptr_tGPIO->ODR,Copy_u8PinNum);
+}
+
+/***********************************************************************************/
 /* Function Name  : MGPIO_vWritePort           		                               */
 /* Function Info  : Sets output on set of port pins		  		                   */
 /* Function Input : - GPIO Base Address
@@ -144,10 +155,10 @@ void MGPIO_vSetAltFun(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,AF_t Copy_tAFNumber){
 void MGPIO_vWritePort(GPIO_t * Ptr_tGPIO,u8 Copy_u8StartPinNum,DATA_LENGTH_t Copy_u8DataLength,u16 Copy_u16Data){
 	switch(Copy_u8DataLength){
 		case _4_BITS:
-			Ptr_tGPIO->ODR =(Ptr_tGPIO->ODR&(~((u16)0x0F<<Copy_u8StartPinNum)))|((Copy_u16Data<<Copy_u8StartPinNum));
+			Ptr_tGPIO->ODR =(Ptr_tGPIO->ODR&(~((u32)0x0F<<Copy_u8StartPinNum)))|((Copy_u16Data<<Copy_u8StartPinNum));
 		break;
 		case _8_BITS:
-			Ptr_tGPIO->ODR =(Ptr_tGPIO->ODR&(~((u16)0xFF<<Copy_u8StartPinNum)))|(((u8)Copy_u16Data<<Copy_u8StartPinNum));
+			Ptr_tGPIO->ODR =(Ptr_tGPIO->ODR&(~((u32)0xFF<<Copy_u8StartPinNum)))|(((u32)Copy_u16Data<<Copy_u8StartPinNum));
 		break;
 		case _16_BITS:
 			Ptr_tGPIO->ODR = Copy_u16Data;
@@ -156,3 +167,6 @@ void MGPIO_vWritePort(GPIO_t * Ptr_tGPIO,u8 Copy_u8StartPinNum,DATA_LENGTH_t Cop
 		break;
 	}
 }
+
+
+
