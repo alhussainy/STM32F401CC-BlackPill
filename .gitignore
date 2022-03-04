@@ -75,3 +75,19 @@ Release/STM32F401CC-Drivers.hex.asm
 Release/STM32F401CC-Drivers.list
 Release/STM32F401CC-Drivers.map
 STM32F401CC-Drivers Release.launch
+Release/Src/HAL/SSD/subdir.mk
+Release/Src/HAL/SSD/SSD_program.su
+Release/Src/HAL/SSD/SSD_program.o
+Release/Src/HAL/LCD/subdir.mk
+Release/Src/HAL/LCD/LCD_program.su
+Release/Src/HAL/LCD/LCD_program.o
+Release/Src/HAL/LCD/LCD_program.d
+*.o
+*.su
+*.mk
+Release/Src/HAL/SSD/subdir.mk
+Release/Src/HAL/SSD/SSD_program.su
+Release/Src/HAL/SSD/SSD_program.o
+Release/Src/HAL/SSD/SSD_program.o
+Release/Src/HAL/SSD/SSD_program.su
+Release/Src/HAL/SSD/subdir.mk

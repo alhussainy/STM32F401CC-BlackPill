@@ -131,3 +131,28 @@ void MGPIO_vSetAltFun(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,AF_t Copy_tAFNumber){
 
 	}
 }
+
+/***********************************************************************************/
+/* Function Name  : MGPIO_vWritePort           		                               */
+/* Function Info  : Sets output on set of port pins		  		                   */
+/* Function Input : - GPIO Base Address
+ * 					- Pin number(0:15)
+ * 					- Data length to be written on the port(DATA_LENGTH_t)
+ * 					- Data														   */
+/* Function Return: None		    			                                   */
+/***********************************************************************************/
+void MGPIO_vWritePort(GPIO_t * Ptr_tGPIO,u8 Copy_u8StartPinNum,DATA_LENGTH_t Copy_u8DataLength,u16 Copy_u16Data){
+	switch(Copy_u8DataLength){
+		case _4_BITS:
+			Ptr_tGPIO->ODR =(Ptr_tGPIO->ODR&(~((u16)0x0F<<Copy_u8StartPinNum)))|((Copy_u16Data<<Copy_u8StartPinNum));
+		break;
+		case _8_BITS:
+			Ptr_tGPIO->ODR =(Ptr_tGPIO->ODR&(~((u16)0xFF<<Copy_u8StartPinNum)))|(((u8)Copy_u16Data<<Copy_u8StartPinNum));
+		break;
+		case _16_BITS:
+			Ptr_tGPIO->ODR = Copy_u16Data;
+		break;
+		default:
+		break;
+	}
+}

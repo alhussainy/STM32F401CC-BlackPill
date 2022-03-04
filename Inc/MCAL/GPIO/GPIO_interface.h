@@ -90,6 +90,11 @@ typedef enum{
 	AF15
 }AF_t;
 
+typedef enum{
+	_4_BITS		 =0		,
+	_8_BITS  	 		,
+	_16_BITS
+}DATA_LENGTH_t;
 /***********************************************************************************/
 /* Function Name  : MGPIO_vSetMode                                                 */
 /* Function Info  : Sets GPIO Mode								                   */
@@ -172,6 +177,16 @@ void MGPIO_vWritePin(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,OUTPUT_t Copy_tOutput);
 /***********************************************************************************/
 void MGPIO_vSetAltFun(GPIO_t * Ptr_tGPIO,u8 Copy_u8PinNum,AF_t Copy_tAFNumber);
 
+
+/***********************************************************************************/
+/* Function Name  : MGPIO_vWritePort           		                               */
+/* Function Info  : Sets output on set of port pins		  		                   */
+/* Function Input : - GPIO Base Address
+ * 					- Pin number(0:15)
+ * 					- Data length to be written on the port	(DATA_LENGTH_t)		   */
+/* Function Return: None		    			                                   */
+/***********************************************************************************/
+void MGPIO_vWritePort(GPIO_t * Ptr_tGPIO,u8 Copy_u8StartPinNum,DATA_LENGTH_t Copy_u8DataLength,u16 Copy_u16Data);
 /*TODO:Pins Locker
  *
  */
